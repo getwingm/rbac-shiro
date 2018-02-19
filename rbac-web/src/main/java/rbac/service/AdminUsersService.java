@@ -97,7 +97,8 @@ public class AdminUsersService {
             log.error("没有找到用户 username:{}, password{}", username, password);
             return null;
         }
-        if (!adminUsers.getPassword().equals(buildPassword(password, adminUsers.getSalt()))) {
+        String pass = buildPassword(password, adminUsers.getSalt());
+        if (!adminUsers.getPassword().equals(pass)) {
             return null;
         }
         return adminUsers;
